@@ -7,17 +7,14 @@ public abstract class Person {
     private int age;
 
     public Person() {
-        this.id = 0;
-        this.firstName = "";
-        this.lastName = "";
-        this.age = 0;
+        this(0, "", "", 0);
     }
 
     public Person(int id, String firstName, String lastName, int age) {
         this.id = id;
-        this.firstName = firstName;
-        this.lastName = lastName;
-        this.age = age;
+        this.firstName = firstName != null ? firstName : "";
+        this.lastName = lastName != null ? lastName : "";
+        this.age = Math.max(0, age);
     }
 
     public int getId() {
@@ -33,7 +30,7 @@ public abstract class Person {
     }
 
     public void setFirstName(String firstName) {
-        this.firstName = firstName;
+        this.firstName = firstName != null ? firstName : "";
     }
 
     public String getLastName() {
@@ -41,7 +38,7 @@ public abstract class Person {
     }
 
     public void setLastName(String lastName) {
-        this.lastName = lastName;
+        this.lastName = lastName != null ? lastName : "";
     }
 
     public int getAge() {
@@ -49,7 +46,6 @@ public abstract class Person {
     }
 
     public void setAge(int age) {
-        // no negatives allowed
         if (age < 0) throw new IllegalArgumentException("Age can't be negative");
         this.age = age;
     }
@@ -60,7 +56,6 @@ public abstract class Person {
 
     @Override
     public String toString() {
-        // just ID, full name, age
         return "ID:" + id + " | " + getFullName() + " | Age:" + age;
     }
 }

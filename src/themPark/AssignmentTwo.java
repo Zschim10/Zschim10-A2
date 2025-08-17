@@ -5,146 +5,136 @@ public class AssignmentTwo {
     public static void main(String[] args) {
         AssignmentTwo demo = new AssignmentTwo();
 
-        // Run each part in order.
-        demo.partOne();
-        demo.partTwo();
-        demo.partThree();
-        demo.partFourA();
-        demo.partFourB();
-        demo.partFive();
-        demo.partSix();
-        demo.partSeven();
+        // run each part in order
+        demo.partOne();     // basic classes and getters
+        demo.partTwo();     // abstract class and interface
+        demo.partThree();   // add/remove/print queue
+        demo.partFourA();   // history add and check
+        demo.partFourB();   // sorting the history
+        demo.partFive();    // cycle riders from queue
+        demo.partSix();     // export ride historys
+        demo.partSeven();   // import ride history
     }
 
-    // PART 1: Core classes
     public void partOne() {
-        System.out.println("\n=== PART 1: Classes & constructors ===");
-        Employee op = new Employee(1, "Sam", "Operator", 41, "E001", "Ride Operator");
-        Visitor a = new Visitor(101, "Alice", "Smith", 25, "Day Pass", false);
-        System.out.println(op);
-        System.out.println(a);
-        Person p = a;
-        System.out.println("As Person: " + p);
+        System.out.println("\n=== PART 1 ===");
+        Employee emp = new Employee(1, "Sam", "Staff", 35, "EMP001", "Ride Op");
+        Visitor vis = new Visitor(101, "Jill", "Visitor", 28, "Day Pass", false);
+        System.out.println(emp);
+        System.out.println(vis);
+        Person p = vis; // using inheritance
+        System.out.println("Person version: " + p);
     }
 
-    // PART 2: Abstraction & Interface
     public void partTwo() {
-        System.out.println("\n=== PART 2: Abstraction & Interface ===");
-        Ride ride = new Ride("Roller Coaster", null, 4);
-        System.out.println("Created ride: " + ride.getRideName() + " (no operator yet).");
+        System.out.println("\n=== PART 2 ===");
+        Ride r = new Ride("Big Drop", null, 5);
+        System.out.println("Ride made: " + r.getRideName());
     }
 
-    // PART 3: Queue of Visitors (FIFO)
     public void partThree() {
-        System.out.println("\n=== PART 3: Queue demo (add/remove/print) ===");
-        Ride ride = new Ride("Ferris Wheel", null, 3);
+        System.out.println("\n=== PART 3 ===");
+        Ride r = new Ride("Loop Coaster", null, 4);
 
-        Visitor v1 = new Visitor(201, "Bob", "Brown", 22, "Single Ride", false);
-        Visitor v2 = new Visitor(202, "Carol", "Jones", 27, "Day Pass", true);
-        Visitor v3 = new Visitor(203, "Derek", "King", 19, "Day Pass", false);
-        Visitor v4 = new Visitor(204, "Eva", "Li", 30, "Single Ride", true);
-        Visitor v5 = new Visitor(205, "Finn", "Ng", 24, "Day Pass", false);
+        Visitor a = new Visitor(1, "Ava", "Jones", 30, "Day Pass", false);
+        Visitor b = new Visitor(2, "Ben", "Smith", 26, "Single Ride", true);
+        Visitor c = new Visitor(3, "Cara", "Lee", 24, "Day Pass", false);
+        Visitor d = new Visitor(4, "Dan", "Ray", 29, "Single Ride", false);
+        Visitor e = new Visitor(5, "Ella", "Ng", 27, "Day Pass", true);
 
-        ride.addVisitorToQueue(v1);
-        ride.addVisitorToQueue(v2);
-        ride.addVisitorToQueue(v3);
-        ride.addVisitorToQueue(v4);
-        ride.addVisitorToQueue(v5);
+        r.addVisitorToQueue(a);
+        r.addVisitorToQueue(b);
+        r.addVisitorToQueue(c);
+        r.addVisitorToQueue(d);
+        r.addVisitorToQueue(e);
 
-        ride.removeVisitorFromQueue();
-        ride.printQueue();
+        r.removeVisitorFromQueue(); // remove first one
+        r.printQueue(); // show current line
     }
 
-    // PART 4A: Ride history + Iterator
     public void partFourA() {
-        System.out.println("\n=== PART 4A: Ride history + Iterator ===");
-        Ride ride = new Ride("Pirate Ship", null, 4);
+        System.out.println("\n=== PART 4A ===");
+        Ride r = new Ride("River Rapids", null, 3);
 
-        Visitor a = new Visitor(301, "Amy", "Zhao", 23, "Day Pass", false);
-        Visitor b = new Visitor(302, "Ben", "Young", 21, "Single Ride", false);
-        Visitor c = new Visitor(303, "Chloe", "Xavier", 32, "Day Pass", true);
-        Visitor d = new Visitor(304, "David", "Wong", 29, "Single Ride", true);
-        Visitor e = new Visitor(305, "Ella", "Vega", 20, "Day Pass", false);
+        Visitor a = new Visitor(11, "Ash", "Liu", 31, "Day Pass", false);
+        Visitor b = new Visitor(12, "Bea", "Chen", 25, "Single Ride", true);
+        Visitor c = new Visitor(13, "Cal", "Tran", 22, "Day Pass", false);
+        Visitor d = new Visitor(14, "Dee", "Patel", 34, "Day Pass", true);
+        Visitor e = new Visitor(15, "Ezra", "Mills", 27, "Single Ride", false);
 
-        ride.addVisitorToHistory(a);
-        ride.addVisitorToHistory(b);
-        ride.addVisitorToHistory(c);
-        ride.addVisitorToHistory(d);
-        ride.addVisitorToHistory(e);
+        r.addVisitorToHistory(a);
+        r.addVisitorToHistory(b);
+        r.addVisitorToHistory(c);
+        r.addVisitorToHistory(d);
+        r.addVisitorToHistory(e);
 
-        ride.checkVisitorFromHistory(c);         // expected true
-        Visitor ghost = new Visitor(999, "Ghost", "Person", 99, "Day Pass", false);
-        ride.checkVisitorFromHistory(ghost);     // expected false
+        r.checkVisitorFromHistory(c); // should be found
+        Visitor ghost = new Visitor(99, "Ghost", "User", 45, "None", false);
+        r.checkVisitorFromHistory(ghost); // not found
 
-        System.out.println("History count: " + ride.numberOfVisitors());
-        ride.printRideHistory();
+        System.out.println("Total history: " + r.numberOfVisitors());
+        r.printRideHistory(); // show everyone in history
     }
 
-    // PART 4B: Sorting with Comparator
     public void partFourB() {
-        System.out.println("\n=== PART 4B: Sort history by lastName then age ===");
-        Ride ride = new Ride("Haunted House", null, 4);
+        System.out.println("\n=== PART 4B ===");
+        Ride r = new Ride("Haunted House", null, 4);
 
-        ride.addVisitorToHistory(new Visitor(401, "Zara",  "Zane",   18, "Single Ride", false));
-        ride.addVisitorToHistory(new Visitor(402, "Alex",  "Adams",  25, "Day Pass", true));
-        ride.addVisitorToHistory(new Visitor(403, "alex",  "Adams",  20, "Day Pass", false));
-        ride.addVisitorToHistory(new Visitor(404, "Mina",  "Brown",  22, "Single Ride", true));
-        ride.addVisitorToHistory(new Visitor(405, "Liam",  "Clark",  26, "Day Pass", false));
+        r.addVisitorToHistory(new Visitor(21, "Zane", "White", 19, "Day Pass", false));
+        r.addVisitorToHistory(new Visitor(22, "Amy", "Adams", 33, "Single Ride", true));
+        r.addVisitorToHistory(new Visitor(23, "Alex", "Adams", 20, "Day Pass", false));
+        r.addVisitorToHistory(new Visitor(24, "Maya", "Bell", 28, "Day Pass", true));
+        r.addVisitorToHistory(new Visitor(25, "Luke", "Chen", 26, "Single Ride", false));
 
         System.out.println("Before sort:");
-        ride.printRideHistory();
+        r.printRideHistory();
 
-        ride.sortRideHistory(new VisitorComparator());
+        r.sortRideHistory(new VisitorComparator());
 
         System.out.println("After sort:");
-        ride.printRideHistory();
+        r.printRideHistory();
     }
 
-    // PART 5: Run One Cycle
     public void partFive() {
-        System.out.println("\n=== PART 5: Run one cycle (requires operator & queue) ===");
-        Employee op = new Employee(10, "Nia", "Operator", 35, "E010", "Ride Operator");
-        Ride ride = new Ride("Roller Coaster", op, 5);
+        System.out.println("\n=== PART 5 ===");
+        Employee op = new Employee(10, "Nina", "Workman", 38, "EMP010", "Ride Op");
+        Ride r = new Ride("Loop Coaster", op, 5);
 
         for (int i = 1; i <= 10; i++) {
-            ride.addVisitorToQueue(new Visitor(500 + i, "Visitor" + i, "Last" + i, 18 + i, "Day Pass", i % 2 == 0));
+            r.addVisitorToQueue(new Visitor(100 + i, "V" + i, "Test", 20 + i, "Day Pass", i % 2 == 0));
         }
 
-        System.out.println("Queue before cycle:");
-        ride.printQueue();
+        System.out.println("Queue before:");
+        r.printQueue();
 
-        ride.runOneCycle();
+        r.runOneCycle(); // run once
 
-        System.out.println("Queue after cycle:");
-        ride.printQueue();
+        System.out.println("Queue after:");
+        r.printQueue();
 
-        System.out.println("History after cycle:");
-        ride.printRideHistory();
+        System.out.println("History after:");
+        r.printRideHistory();
     }
 
-    // PART 6: Export history to CSV (file I/O)
     public void partSix() {
-        System.out.println("\n=== PART 6: Export history to CSV ===");
-        Ride ride = new Ride("Drop Tower", null, 4);
+        System.out.println("\n=== PART 6 ===");
+        Ride r = new Ride("Spinning Cups", null, 3);
 
-        ride.addVisitorToHistory(new Visitor(601, "Ava", "Gray", 24, "Day Pass", true));
-        ride.addVisitorToHistory(new Visitor(602, "Noah", "Hill", 21, "Single Ride", false));
-        ride.addVisitorToHistory(new Visitor(603, "Ivy", "Ives", 28, "Day Pass", true));
-        ride.addVisitorToHistory(new Visitor(604, "Leo", "Jade", 20, "Single Ride", false));
-        ride.addVisitorToHistory(new Visitor(605, "Mia", "Kent", 22, "Day Pass", false));
+        r.addVisitorToHistory(new Visitor(51, "Andy", "Lo", 22, "Day Pass", true));
+        r.addVisitorToHistory(new Visitor(52, "Beck", "Yan", 26, "Single Ride", false));
+        r.addVisitorToHistory(new Visitor(53, "Cara", "Jin", 28, "Day Pass", true));
 
         String filename = "ride_history_export.csv";
-        ride.exportRideHistory(filename);
-        System.out.println("Check project folder for: " + filename);
+        r.exportRideHistory(filename);
+        System.out.println("Saved to: " + filename);
     }
 
-    // PART 7: Import history from CSV (file I/O)
     public void partSeven() {
-        System.out.println("\n=== PART 7: Import history from CSV ===");
-        Ride ride = new Ride("Drop Tower (Imported)", null, 4);
+        System.out.println("\n=== PART 7 ===");
+        Ride r = new Ride("Imported Ride", null, 3);
         String filename = "ride_history_export.csv";
-        ride.importRideHistory(filename);
-        System.out.println("Imported count: " + ride.numberOfVisitors());
-        ride.printRideHistory();
+        r.importRideHistory(filename);
+        System.out.println("Loaded from: " + filename);
+        r.printRideHistory();
     }
 }

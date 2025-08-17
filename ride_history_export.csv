@@ -1,6 +1,4 @@
 id,firstName,lastName,age,ticketType,hasMembership
-601,Ava,Gray,24,Day Pass,true
-602,Noah,Hill,21,Single Ride,false
-603,Ivy,Ives,28,Day Pass,true
-604,Leo,Jade,20,Single Ride,false
-605,Mia,Kent,22,Day Pass,false
+51,Andy,Lo,22,Day Pass,true
+52,Beck,Yan,26,Single Ride,false
+53,Cara,Jin,28,Day Pass,true

@@ -12,7 +12,7 @@ public class Visitor extends Person {
 
     public Visitor(int id, String firstName, String lastName, int age, String ticketType, boolean hasMembership) {
         super(id, firstName, lastName, age);
-        this.ticketType = ticketType;
+        this.ticketType = ticketType != null ? ticketType : "";
         this.hasMembership = hasMembership;
     }
 
@@ -21,7 +21,7 @@ public class Visitor extends Person {
     }
 
     public void setTicketType(String ticketType) {
-        this.ticketType = ticketType;
+        this.ticketType = ticketType != null ? ticketType : "";
     }
 
     public boolean hasMembership() {
@@ -34,7 +34,6 @@ public class Visitor extends Person {
 
     @Override
     public String toString() {
-        // visitor info
         return "[VIS] " + super.toString() + " | Ticket:" + ticketType + " | Member:" + (hasMembership ? "Yes" : "No");
     }
 }

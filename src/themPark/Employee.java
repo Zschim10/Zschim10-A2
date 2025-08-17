@@ -12,8 +12,8 @@ public class Employee extends Person {
 
     public Employee(int id, String firstName, String lastName, int age, String employeeId, String jobTitle) {
         super(id, firstName, lastName, age);
-        this.employeeId = employeeId;
-        this.jobTitle = jobTitle;
+        this.employeeId = employeeId != null ? employeeId : "";
+        this.jobTitle = jobTitle != null ? jobTitle : "";
     }
 
     public String getEmployeeId() {
@@ -21,7 +21,7 @@ public class Employee extends Person {
     }
 
     public void setEmployeeId(String employeeId) {
-        this.employeeId = employeeId;
+        this.employeeId = employeeId != null ? employeeId : "";
     }
 
     public String getJobTitle() {
@@ -29,12 +29,11 @@ public class Employee extends Person {
     }
 
     public void setJobTitle(String jobTitle) {
-        this.jobTitle = jobTitle;
+        this.jobTitle = jobTitle != null ? jobTitle : "";
     }
 
     @Override
     public String toString() {
-        // shows basic employee info
         return "[EMP] " + super.toString() + " | EmpID:" + employeeId + " | Title:" + jobTitle;
     }
 }
